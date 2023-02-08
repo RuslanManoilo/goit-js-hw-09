@@ -1,5 +1,6 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import Notiflix from 'notiflix';
 
 const options = {
     enableTime: true,
@@ -30,7 +31,7 @@ const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
 const styleElem = document.querySelector('.timer')
 const currentDate = new Date();
-console.dir(dataDays);
+// console.dir(dataDays);
 // console.log(dataHours);
 // console.log(dataMinutes);
 // console.log(dataSeconds);
@@ -69,7 +70,7 @@ function onStartTimer() {
 
         if (remainingTime < 999) {
             clearInterval(remainingTimer);
-            // window.alert("The moment has come!");
+            Notiflix.Notify.success("✅The moment has come!✅");
         };
     }, 1000);
 };
