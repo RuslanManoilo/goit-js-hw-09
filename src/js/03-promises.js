@@ -8,11 +8,11 @@ formElem.addEventListener('submit', submitForm);
 function submitForm(event) {
   event.preventDefault();
 
-  const amountEl = event.currentTarget.elements[2].value;
-  const stepDelay = event.currentTarget.elements[1].value;
-  const firstDelay = event.currentTarget.elements[0].value;
+  const amountEl = Number(event.currentTarget.elements[2].value);
+  const stepDelay = Number(event.currentTarget.elements[1].value);
+  const firstDelay = Number(event.currentTarget.elements[0].value);
 
-  for (let i = 0; i <= amountEl; i += 1) {
+  for (let i = 1; i <= amountEl; i += 1) {
     let position = i;
     let delay = firstDelay + stepDelay * (position - 1);
 
@@ -24,6 +24,8 @@ function submitForm(event) {
       Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     });
   };
+
+  event.currentTarget.reset();
 };
 
 
@@ -36,7 +38,7 @@ function createPromise(position, delay) {
       } else {
         reject({position, delay});
       }
-    })
+    }, delay)
   })
     return promise;
 };

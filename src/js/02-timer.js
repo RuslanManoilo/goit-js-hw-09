@@ -12,7 +12,7 @@ const options = {
       if (currentDate < selectedDates[0]) {
         startButton.disabled = false;
       } else {
-        return window.alert("Please choose a date in the future");
+        return Notiflix.Notify.failure("Please choose a date in the future");
       }
     },
 };

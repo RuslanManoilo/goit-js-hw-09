@@ -9,6 +9,7 @@ startButton.addEventListener('click', onStartClick);
 stopButton.addEventListener('click', onStopClick);
 
 let timerColor = null;
+stopButton.disabled = true;
 
 function onStartClick(event) {
     // console.dir(event.currentTarget);   
@@ -17,15 +18,15 @@ function onStartClick(event) {
     }, 1000);
 
     event.currentTarget.disabled = true;
+    stopButton.disabled = false;
 };
 
 function onStopClick() {
     clearInterval(timerColor);
     // console.log(`Stop!`);
     startButton.disabled = false;
+    stopButton.disabled = true;
 };
-
-
 
 function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
